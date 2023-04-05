@@ -7,12 +7,12 @@ var app = express()
 var jwt = require("jsonwebtoken")
 var cookies = require("cookie-parser")
 var bcrypt = require("bcryptjs")
+const swaggerjsdoc = require("swagger-jsdoc")
+const swaggerui = require("swagger-ui-express")
+const options = require ("./routes/swagger")
 
 
-
-
-
-
+const spacs = swaggerjsdoc(options)
 mongoose.connect("mongodb://localhost:27017")
 
 
@@ -29,9 +29,11 @@ app.use(cors())
 app.use(cookies())
 
 
-app.use("/auth",Auth)
+app.use( "/swag",swaggerui.serve,swaggerui.setup(spacs))
 
+app.use("/auth",Auth)
 app.use("/users",Users)
+
 
 
 
