@@ -5,6 +5,73 @@ const Users = require("../model/Usermodel")
 const jwt = require("jsonwebtoken")
 const createError = require("../utils/createError")
 
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     users:
+ *       type: object
+ *       properties:
+ *         username:
+ *           type: string 
+ *         password:
+ *           type: string
+ *  
+ *             
+ * 
+ */
+
+/**
+ * @swagger
+ * /auth/signup:
+ *   post:
+ *     summary: this is where the user will register first
+ *     tags: [REGISTRATION PORT]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/users'
+ *     responses:
+ *       200:
+ *         description: success
+ *         contents: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/users'
+ *       400:
+ *         description: username not found
+ *       500:
+ *         description: server error      
+ * 
+ */
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: you need to login for authentification
+ *     tags: [LOGIN PORT]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/users'
+ *     responses:
+ *       200:
+ *         description: successful
+ *         contents: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/users'
+ *       400:
+ *         description: username not found
+ *       500:
+ *         description: server error      
+ * 
+ */
 // create a user here
 authrouter.post ("/signup",(req,res,next)=>{
     var salt = bcrypt.genSaltSync(10)

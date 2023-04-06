@@ -9,10 +9,35 @@ var cookies = require("cookie-parser")
 var bcrypt = require("bcryptjs")
 const swaggerjsdoc = require("swagger-jsdoc")
 const swaggerui = require("swagger-ui-express")
-const options = require ("./routes/swagger")
 
 
-const spacs = swaggerjsdoc(options)
+
+
+
+
+const opt= {
+    definition :{
+        openapi :"3.0.0",
+        info :{
+            title: "MY REST API",
+            version:"3.0.1",
+            description: "this Api performs crud operations",
+            contact :{
+                name:" My Name is Abel Paul"
+      
+            }
+        },
+        servers :[
+            {
+            url: "http://localhost:3001",
+        },
+    ],
+    },
+    apis :["./routes/*.js"],
+};
+
+
+const spacs = swaggerjsdoc(opt)
 mongoose.connect("mongodb://localhost:27017")
 
 

@@ -4,6 +4,112 @@ var createError = require("../utils/createError");
 const Verifyuser = require("../utils/checkuser");
 
 
+
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     users:
+ *       type: object
+ *       properties:
+ *         username:
+ *           type: string 
+ *         password:
+ *           type: string
+ *  
+ *             
+ * 
+ */
+/**
+ * @swagger
+ * /users/{id}:
+ *   get:
+ *     summary: Get username by the ID
+ *     tags: [GET USERNAME BY ID]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         description: the book id
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: successful
+ *         contents:
+ *           application/json:
+ *             schema:
+ *               $ref:'#/components/schemas/users'
+ *          
+ * 
+ *  
+ *    
+ */
+
+/**
+ * @swagger
+ * /users/{id}:
+ *   delete:
+ *     summary: remove users
+ *     tags: [DELETE USER]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: the user id
+ *     responses:
+ *       200:
+ *         description: deleted successfully
+ *         contents:
+ *           application/json:
+ *             schema:
+ *               $ref:'#/components/schemas/users'
+ */
+
+/**
+ * @swagger
+ * /users/{id}:
+ *   put:
+ *     summary: update the username
+ *     tags: [update users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: update username with id
+ *     requestBody:
+ *       required: true
+ *       content: 
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schema/users'
+ * 
+ *     responses:
+ *       200:
+ *         description: updated sucessful
+ *       500:
+ *         server error
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *     
+ * 
+ */
+
+
+
+ 
+
+
 // retrive a user by ID
 Userrouter.get("/:id",Verifyuser,(req,res,next)=>{
     Usermodel.findById(req.params.id)
