@@ -48,6 +48,7 @@ const Verifyuser = require("../utils/checkuser");
  *    
  */
 
+
 /**
  * @swagger
  * /users/{id}:
@@ -70,42 +71,41 @@ const Verifyuser = require("../utils/checkuser");
  *               $ref:'#/components/schemas/users'
  */
 
+
+
+
 /**
  * @swagger
- * /users/{id}:
+ * /auth/signup:
  *   put:
- *     summary: update the username
- *     tags: [update users]
+ *     summary: update the username with id
+ *     tags: [CHANGE USERNAME]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: update username with id
+ *         description: the user id
  *     requestBody:
  *       required: true
- *       content: 
+ *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schema/users'
- * 
+ *             $ref: '#/components/schemas/users'
  *     responses:
  *       200:
- *         description: updated sucessful
+ *         description: success Updated
+ *         contents: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/users'
+ *       404:
+ *         description: username not found
  *       500:
- *         server error
- * 
- * 
- * 
- * 
- * 
- * 
- *     
+ *         description: server error      
  * 
  */
-
-
 
  
 
